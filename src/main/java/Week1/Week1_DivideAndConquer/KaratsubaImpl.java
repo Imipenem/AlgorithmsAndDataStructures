@@ -1,4 +1,4 @@
-package main.java.Week1_DivideAndConquer;
+package main.java.Week1.Week1_DivideAndConquer;
 
 import java.math.BigInteger;
 

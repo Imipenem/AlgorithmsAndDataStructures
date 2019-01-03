@@ -1,6 +1,6 @@
-package test.java.KaratsubaImplTest;
+package test.java.Week1.KaratsubaImplTest;
 
-import main.java.Week1_DivideAndConquer.KaratsubaImpl;
+import main.java.Week1.Week1_DivideAndConquer.KaratsubaImpl;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
