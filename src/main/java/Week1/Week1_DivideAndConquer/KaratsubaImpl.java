@@ -4,33 +4,31 @@ import java.math.BigInteger;
 
 public class KaratsubaImpl {
     public static void main(String[] args) {
-        //only for implementation step tests
-        //KaratsubaImpl obj = new KaratsubaImpl();
-        //System.out.println(obj.karatsuba(new BigInteger("10000000000000000000000002"), new BigInteger("565656565656565656565656")));
-        //System.out.println(new BigInteger("2").multiply(new BigInteger("222222236236273627372163271637263762163762173612786371237612637261731278376217361276372167361276372163761273672163762176327163761237621")));
+        //only for implementation testing
+        KaratsubaImpl obj = new KaratsubaImpl();
+        System.out.println(obj.karatsuba(new BigInteger("0"), new BigInteger("0")));
     }
 
     /**
      * With this method, I try to implement the famous Karatsuba Algorithm to calculate large integer multiplications.
      * It uses the BigInteger class and the common recursive "Divide and Conquer"- approach
-     * NOTE: While creating the test cases, I recognized this will take the longer, the more the input differs in length!
      *
      * @param x the first number
      * @param y the second number
      * @return the product of x times y (e.g x*y)
      */
     public BigInteger karatsuba(BigInteger x, BigInteger y) {
-        int n = x.toString().length(); //could be float/long since for large input, n can be outside the range of integer representation
+        int n = Math.max(x.toString().length(),y.toString().length()); //could be float/long since for large input, n can be outside the range of integer representation
         n = n / 2 + (n % 2);
 
-        if (x.compareTo(BigInteger.TEN) < 0 && y.compareTo(BigInteger.TEN) < 0) {
+        if (x.compareTo(BigInteger.TEN) < 0 && y.compareTo(BigInteger.TEN) < 0) {  // base case: single digit multiplication
             return x.multiply(y);
         } else {
-            BigInteger[] xL_xH = x.divideAndRemainder(BigInteger.valueOf(10).pow(n));
+            BigInteger[] xL_xH = x.divideAndRemainder(BigInteger.valueOf(10).pow(n)); //calculating the two halves of x
             BigInteger xH = xL_xH[0];
             BigInteger xL = xL_xH[1];
 
-            BigInteger[] yL_yH = y.divideAndRemainder(BigInteger.valueOf(10).pow(n));
+            BigInteger[] yL_yH = y.divideAndRemainder(BigInteger.valueOf(10).pow(n)); //calculating the two halves of y
             BigInteger yH = yL_yH[0];
             BigInteger yL = yL_yH[1];
 
