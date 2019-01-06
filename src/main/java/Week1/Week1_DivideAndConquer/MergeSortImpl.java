@@ -15,9 +15,9 @@ public class MergeSortImpl {
     }
 
     /**
-     * With this method I try to implement the merge sort algorithm.
+     * This method executes a merge sort.
      *
-     * @param listToBeSorted the list, that needs to be in sorted (increasing) order.
+     * @param listToBeSorted the list, that needs to be in sorted order.
      * @return the "sorted by merge sort since 1899" list
      */
 
