@@ -4,13 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MergeSortImpl {
+    private boolean decreased; //only for decreased/increased decision
+    private boolean increased; //only for decreased/increased decision
+
+    /**
+     * Just a small main() for decreased vs. increased user input...
+     * @param args
+     */
     public static void main(String[] args) {
-        //Used for implementation testing
     }
 
     /**
-     * With this method I try to implement the merge sort algorithm. It will sort the list ONLY in increasing order, but I´ll add
-     * a decreasing option.
+     * With this method I try to implement the merge sort algorithm.
      *
      * @param listToBeSorted the list, that needs to be in sorted (increasing) order.
      * @return the "sorted by merge sort since 1899" list
@@ -28,7 +33,8 @@ public class MergeSortImpl {
     }
 
     /**
-     * This method simply merges (and sort) the recursively splitted lists.
+     * This method simply merges (and sort) the recursively splitted lists. It can sort the array both ways;
+     * increasing order or decreasing order.
      *
      * @param leftList The lefthand list to be merged
      * @param rightList The righthand list to be merged
@@ -42,12 +48,25 @@ public class MergeSortImpl {
 
         while (leftList.size() - 1 >= indLeft && rightList.size() - 1 >= indRight) {
 
-            if (leftList.get(indLeft) <= rightList.get(indRight)) {
-                sortedPartList.add(leftList.get(indLeft));
-                indLeft++;
-            } else {
-                sortedPartList.add(rightList.get(indRight));
-                indRight++;
+            if (decreased) {
+
+                if (leftList.get(indLeft) >= rightList.get(indRight)) { //change here
+                    sortedPartList.add(leftList.get(indLeft));
+                    indLeft++;
+                } else {
+                    sortedPartList.add(rightList.get(indRight));
+                    indRight++;
+                }
+            }
+
+            else {
+                if (leftList.get(indLeft) <= rightList.get(indRight)) { //change here
+                    sortedPartList.add(leftList.get(indLeft));
+                    indLeft++;
+                } else {
+                    sortedPartList.add(rightList.get(indRight));
+                    indRight++;
+                }
             }
         }
 
@@ -65,5 +84,23 @@ public class MergeSortImpl {
             }
         }
         return sortedPartList;
+    }
+
+   //few getter and setters for testing purposes
+
+    public boolean isDecreased() {
+        return decreased;
+    }
+
+    public boolean isIncreased() {
+        return increased;
+    }
+
+    public void setDecreased(boolean decreased) {
+        this.decreased = decreased;
+    }
+
+    public void setIncreased(boolean increased) {
+        this.increased = increased;
     }
 }
